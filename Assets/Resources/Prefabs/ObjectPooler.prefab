@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1696325841222784601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1696325841222784603}
+  - component: {fileID: 1696325841222784602}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Pool
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1696325841222784603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696325841222784601}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1696325841222784602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696325841222784601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008cfb7e5235b104ab694a4bab1e66da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDebug: 0
+  shouldDestroyOnLoad: 0
+  pools:
+  - tag: CommonEnemy
+    prefab: {fileID: 5371501321525750977, guid: 9b1f973d0f8c5544a925bdcf7510749a, type: 3}
+    amount: 30
+    shouldExpandPool: 1
+    extensionLimit: 0
+  - tag: ShieldEnemy
+    prefab: {fileID: 5371501321525750977, guid: 90d5ed8096b2b504ca2b07b27c8fd677, type: 3}
+    amount: 30
+    shouldExpandPool: 1
+    extensionLimit: 0
+  - tag: SlowEnemy
+    prefab: {fileID: 5371501321525750977, guid: bb2ad23a341d75d44aea6e58bb1053ea, type: 3}
+    amount: 30
+    shouldExpandPool: 1
+    extensionLimit: 0
+  - tag: ExplodeEnemy
+    prefab: {fileID: 5371501321525750977, guid: 12d62cbb57c766e4fafb7c8dd42b01e2, type: 3}
+    amount: 30
+    shouldExpandPool: 1
+    extensionLimit: 0
+  - tag: Bullet
+    prefab: {fileID: 4393699435488516910, guid: 6d793b12dcd2e7340b0d93e9e93da618, type: 3}
+    amount: 60
+    shouldExpandPool: 1
+    extensionLimit: 0
+  - tag: BulletEnemy
+    prefab: {fileID: 5371501321525750977, guid: 44f545180c081e84f83e3d85e1102f96, type: 3}
+    amount: 30
+    shouldExpandPool: 1
+    extensionLimit: 0
+  - tag: Minion
+    prefab: {fileID: 5371501321525750977, guid: 6d6ea95c7b50cbc49bda64bf712fcfaf, type: 3}
+    amount: 30
+    shouldExpandPool: 1
+    extensionLimit: 0
+  - tag: TrackBullet
+    prefab: {fileID: 4393699435488516910, guid: 7e05bab2ee610124aa04c7f58e72a8b1, type: 3}
+    amount: 60
+    shouldExpandPool: 1
+    extensionLimit: 0
+  - tag: Vortex
+    prefab: {fileID: 6316763756285187116, guid: 263a84ba9bd0f094487b984acd758135, type: 3}
+    amount: 10
+    shouldExpandPool: 1
+    extensionLimit: 0
+  - tag: TrackBulletFast
+    prefab: {fileID: 4393699435488516910, guid: fbc52eca37fc1c14b8e08d4732405295, type: 3}
+    amount: 60
+    shouldExpandPool: 1
+    extensionLimit: 0

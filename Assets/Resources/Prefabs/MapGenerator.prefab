@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7549521943211305725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 35163498752446717}
+  - component: {fileID: 5649035298659666719}
+  - component: {fileID: 8877511164323631677}
+  m_Layer: 0
+  m_Name: MapGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &35163498752446717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7549521943211305725}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5649035298659666719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7549521943211305725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b5681a0c6324f4a89136867c43b4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  straightRoadPrefab: {fileID: 100000, guid: 4f32dfddb033d3e40b5841bc53cc1689, type: 3}
+  cornerRoadPrefab: {fileID: 100000, guid: 3a7e1c0a00828fd4196c8cd24886d2ed, type: 3}
+  tJunctionRoadPrefab: {fileID: 100000, guid: cbc86bb57f673ba45a8426789eb0fac0, type: 3}
+  crossRoadPrefab: {fileID: 100000, guid: 47ef019eb3bddab469e56e5a31eebf68, type: 3}
+  buildingPrefabs: []
+  carPrefabs: []
+  propPrefabs: []
+  weedPrefabs: []
+  flowerPrefabs: []
+  crackPrefabs: []
+  buildingSpacing: 25
+  carsPerRoad: 2
+  crackPerRoad: 1
+  propDensity: 1
+  weedDensity: 1
+  weedPerBlock: 20
+  flowerDensity: 1
+  flowerPerBlock: 5
+  minScale: 1
+  maxScale: 3
+  MapSize: 200
+  maxEnemies: 90
+  roads: []
+  cars: []
+  buildings: []
+  spawnPoints: []
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 896
+  facilityPrefab:
+  - {fileID: 8011249374252953079, guid: 0fa7eb2f2343616439d72111072e00f5, type: 3}
+  - {fileID: 3882718038004791777, guid: 79f0169b82e5f474da554778583d2bea, type: 3}
+  - {fileID: 2857548132292842768, guid: 7eb9592f9bb3f3c41960ed9deb62a227, type: 3}
+  - {fileID: 1421055432736436861, guid: 1734618070bb9e24e93fdcf613d49816, type: 3}
+  - {fileID: 964210949404436839, guid: 6804232568ade5d4c8e24d50a19fc5ac, type: 3}
+  portalPrefab: {fileID: 3192018086949929181, guid: f8d8835362139e24f9e615a7bde7daea, type: 3}
+  sceneToGo: {fileID: 11400000, guid: aa929f80c0e0aa442b681e97fa2daae2, type: 2}
+  facilityCountPerType: 0a0000000a000000050000000f00000003000000
+  allFacilities: []
+--- !u!114 &8877511164323631677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7549521943211305725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 436cead9804bcb845a233fcde2c9f2f6, type: 2}
+  m_BuildHeightMesh: 0

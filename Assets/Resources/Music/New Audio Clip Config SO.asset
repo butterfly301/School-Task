@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9de0efda44a7974fa4c688173c2ee81, type: 3}
+  m_Name: New Audio Clip Config SO
+  m_EditorClassIdentifier: 
+  entries:
+  - soundEvent: 3
+    clip: {fileID: 8300000, guid: 175b4940173a0ae44a17caba013cdaeb, type: 3}
+    volume: 1
+  - soundEvent: 16
+    clip: {fileID: 8300000, guid: 65dbbebb010e51543b3b86e70f480da0, type: 3}
+    volume: 1
+  - soundEvent: 5
+    clip: {fileID: 8300000, guid: 1592a12bdb8d6524dafae52e47837159, type: 3}
+    volume: 1
+  - soundEvent: 1
+    clip: {fileID: 8300000, guid: bfcd137d8a1263540b00f93ddccdbb77, type: 3}
+    volume: 0.458
+  - soundEvent: 4
+    clip: {fileID: 8300000, guid: b526678044cc8d941b3f12b403c00cc7, type: 3}
+    volume: 1
+  - soundEvent: 12
+    clip: {fileID: 8300000, guid: 6bbf65e787331e640ac64daf88687837, type: 3}
+    volume: 1
+  - soundEvent: 11
+    clip: {fileID: 8300000, guid: 6b4575729f45d184190b4392e8de46c4, type: 3}
+    volume: 0.512
+  - soundEvent: 8
+    clip: {fileID: 8300000, guid: d78af93c5c44836418d6e5b6511fbd4d, type: 3}
+    volume: 0.674
+  - soundEvent: 14
+    clip: {fileID: 8300000, guid: fe41e6b937cb87049a5c21e998a7cbbb, type: 3}
+    volume: 0.554
+  - soundEvent: 7
+    clip: {fileID: 8300000, guid: 1d181c5f675e3294d98117bed3005f08, type: 3}
+    volume: 0.568
+  - soundEvent: 10
+    clip: {fileID: 8300000, guid: 95011e5cd924f214cadd5570bb77029c, type: 3}
+    volume: 0.626
+  - soundEvent: 15
+    clip: {fileID: 0}
+    volume: 1
+  - soundEvent: 17
+    clip: {fileID: 8300000, guid: 8cd053583fe38c241a5165270cc75e36, type: 3}
+    volume: 1
+  - soundEvent: 18
+    clip: {fileID: 8300000, guid: fc64370ab3f794a41955f90caf3b39a6, type: 3}
+    volume: 1
+  - soundEvent: 6
+    clip: {fileID: 8300000, guid: 47f7e1d6302f6ef449d5c3496fe223c0, type: 3}
+    volume: 0.539
+  - soundEvent: 13
+    clip: {fileID: 8300000, guid: 209dd94815f1ea44380274d2baa8522d, type: 3}
+    volume: 1
+  - soundEvent: 9
+    clip: {fileID: 8300000, guid: a3e9248a18cf72f4cb14203404d39430, type: 3}
+    volume: 0.596
+  - soundEvent: 20
+    clip: {fileID: 8300000, guid: 8bee1cebd2dae7548bf10a7cc4810f50, type: 3}
+    volume: 0.596
+  - soundEvent: 19
+    clip: {fileID: 8300000, guid: d44c2c3dc4b8d0e48a7664a413e85e81, type: 3}
+    volume: 0.596
+  - soundEvent: 21
+    clip: {fileID: 8300000, guid: 383711ecf01d8a14d9bf8b853b70e62a, type: 3}
+    volume: 0.835

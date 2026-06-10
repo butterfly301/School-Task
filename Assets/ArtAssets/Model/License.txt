@@ -1,0 +1,11 @@
+Piggy bank by Poly by Google [CC-BY] (httpscreativecommons.orglicensesby3.0) via Poly Pizza (httpspoly.pizzamdpvS2kdW6I9)
+Dice by Poly by Google [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/dt1_LCub60M)
+Battery by Bruno Oliveira [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/9gnjbN0VUUn)
+Cat Food Cans | closed, open by sirkitree [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/cpdwLDHiw8-)
+Dynamite with Timer by Hunter Paramore [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/0q9sW5qkUuS)
+Missile by Jarlan Perez [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/1Xid2Qhqn2s)
+International Space Station by Poly by Google [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/d3Fq5H6ne8E)
+Turret by MiniPoly [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/IYdpAod3i2)
+Bot Drone by Dave404 [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/2iyQx2YscRq)
+VR DRONE by Dave404 [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/580fbWUqqbh)
+MyPooler.ObjectPooler.Instance.ReturnToPool(poolTag, this.gameObject);

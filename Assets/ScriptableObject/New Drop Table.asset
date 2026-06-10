@@ -1,0 +1,232 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531b8003e4967644d964f3291a69416f, type: 3}
+  m_Name: New Drop Table
+  m_EditorClassIdentifier: 
+  items:
+  - itemName: item1
+    prefab: {fileID: 8504242058037976154, guid: d7a05112d4d3f2648a0ae706de579d67, type: 3}
+    baseWeight: 1
+    dynamicWeightEnabled: 0
+    weightOverTime:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 4
+  - itemName: item2
+    prefab: {fileID: 8504242058037976154, guid: 372747b779b007549a6b1689f0e7776c, type: 3}
+    baseWeight: 0.5
+    dynamicWeightEnabled: 0
+    weightOverTime:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 4
+  - itemName: item3
+    prefab: {fileID: 8504242058037976154, guid: d10615ebcbcd69b438e1510f2770ae28, type: 3}
+    baseWeight: 0.4
+    dynamicWeightEnabled: 0
+    weightOverTime:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.00605011
+        value: 0.399292
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.17818564
+        value: 0.5108353
+        inSlope: 0.11261434
+        outSlope: 0.11261434
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.24626106
+        value: 0.5280693
+        inSlope: 0.03571981
+        outSlope: 0.03571981
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.52445626
+        value: 0.5553646
+        inSlope: -0.012817438
+        outSlope: -0.012817438
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.9425467
+        value: 0.5982713
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - itemName: item4
+    prefab: {fileID: 8504242058037976154, guid: b9b43de11894eca4687fc466652e2b49, type: 3}
+    baseWeight: 0.7
+    dynamicWeightEnabled: 0
+    weightOverTime:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 4
+  - itemName: item5
+    prefab: {fileID: 8504242058037976154, guid: 89648299d72b3f646ba5ea44f21ab2f5, type: 3}
+    baseWeight: 0.9
+    dynamicWeightEnabled: 0
+    weightOverTime:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016947506
+        value: 0.9034917
+        inSlope: 0.30079454
+        outSlope: 0.30079454
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.0168781
+        value: 1.2042654
+        inSlope: 0.30079454
+        outSlope: 0.30079454
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - itemName: item6
+    prefab: {fileID: 4553895582911148815, guid: ecb906636a0a78c4e81b9f1cf68ebfb8, type: 3}
+    baseWeight: 0.3
+    dynamicWeightEnabled: 0
+    weightOverTime:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 4
+  - itemName: item7
+    prefab: {fileID: 3634014837179592963, guid: f92071ffe63a81e469d5030696f141bd, type: 3}
+    baseWeight: 1
+    dynamicWeightEnabled: 0
+    weightOverTime:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 4
+  - itemName: item8
+    prefab: {fileID: 981392122184131503, guid: 69db67bdad8410b4fb5392a32c55fc6e, type: 3}
+    baseWeight: 0.2
+    dynamicWeightEnabled: 0
+    weightOverTime:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.20062256
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.44350782
+        value: 0.19692644
+        inSlope: 0.009985816
+        outSlope: 0.009985816
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.61310416
+        value: 0.21878879
+        inSlope: -0.22733723
+        outSlope: -0.22733723
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7514024
+        value: 0.2420058
+        inSlope: 0.66181046
+        outSlope: 0.66181046
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7693487
+        value: 0.26535723
+        inSlope: 0.77276146
+        outSlope: 0.77276146
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 1
+      - serializedVersion: 3
+        time: 1.1857299
+        value: 0.3392256
+        inSlope: 0.7366382
+        outSlope: 0.7366382
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.29007792
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - itemName: item9
+    prefab: {fileID: 8482591052772860804, guid: 8b44fe632c1a4824d9a6969df4b93e06, type: 3}
+    baseWeight: 0.7
+    dynamicWeightEnabled: 0
+    weightOverTime:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 4
+  - itemName: item10
+    prefab: {fileID: 8482591052772860804, guid: 608b7bb89aaed5249800a10266c134f8, type: 3}
+    baseWeight: 0.8
+    dynamicWeightEnabled: 0
+    weightOverTime:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 4

@@ -88,10 +88,13 @@ InitTestScene*.unity*
 /[Aa]ssets/StreamingAssets/aa*
 /[Aa]ssets/AddressableAssetsData/link.xml*
 /[Aa]ssets/Addressables_Temp*
-# By default, Addressables content builds will generate addressables_content_state.bin
-# files in platform-specific subfolders, for example:
-# /Assets/AddressableAssetsData/OSX/addressables_content_state.bin
-/[Aa]ssets/AddressableAssetsData/*/*.bin*
+
+# Packed Addressables
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+
+# Temporary auto-generated Android Assets
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Visual Scripting auto-generated files
 /[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db
@@ -104,3 +107,10 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# Large local-only assets excluded from GitHub's 100MB file limit
+/Assets/ArtAssets/Video/介绍视频.mp4
+/Assets/Resources/Fonts/SourceHanSans-Medium SDF No Underlay.asset
+/Assets/Resources/Fonts/SourceHanSans-Medium SDF.asset
+/Assets/Resources/Fonts/dingliehuobanti SDF.asset
+/Assets/TextMesh Pro/Resources/Fonts & Materials/SourceHanSans-Medium SDF.asset

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9288ac7b3f83e7648a78a88e67d72a95
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - boomEffect: {instanceID: 0}
+  - audioEventChannel: {fileID: 11400000, guid: 9bedeb3ccc1d03f45830393d98d880a1, type: 2}
+  - OnLand: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

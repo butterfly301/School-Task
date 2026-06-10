@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8094979d1dbff824ca9d8d2821868509
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - channel: {fileID: 11400000, guid: 9bedeb3ccc1d03f45830393d98d880a1, type: 2}
+  - clipConfig: {fileID: 11400000, guid: 1a5488c3324a0204c98e2aefb72c299f, type: 2}
+  - audioPool: {instanceID: 0}
+  - sfxGroup: {fileID: -5623670233833276908, guid: b8ea432cadb03f341b0d6bd3b561394d, type: 2}
+  - bgmGroup: {fileID: 6078165227220412794, guid: b8ea432cadb03f341b0d6bd3b561394d, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,16 @@
+using System;
+using MyPooler;
+using UI;
+using UnityEngine;
+
+public class Menu : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        GameFlowCoordinator.Instance.EnterFlow(GameFlowState.Menu);
+        FixedUIManager.Instance.ClosePanel();
+        ObjectPooler.Instance.DestoryItself();
+    }
+    
+}
