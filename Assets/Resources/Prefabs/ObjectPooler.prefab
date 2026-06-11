@@ -53,12 +53,12 @@ MonoBehaviour:
     shouldExpandPool: 1
     extensionLimit: 0
   - tag: ShieldEnemy
-    prefab: {fileID: 5371501321525750977, guid: 90d5ed8096b2b504ca2b07b27c8fd677, type: 3}
+    prefab: {fileID: 8988822155724194013, guid: 79adcf9ac4238f1488446740c1376ce5, type: 3}
     amount: 30
     shouldExpandPool: 1
     extensionLimit: 0
   - tag: SlowEnemy
-    prefab: {fileID: 5371501321525750977, guid: bb2ad23a341d75d44aea6e58bb1053ea, type: 3}
+    prefab: {fileID: 6073282309116549327, guid: c1da4868082c59343a367c5e445f03e9, type: 3}
     amount: 30
     shouldExpandPool: 1
     extensionLimit: 0

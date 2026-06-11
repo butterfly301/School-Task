@@ -3513,6 +3513,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3394496360667534297, guid: 4b41fa7a47f3e00439e1843ea02d7955, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 35.000244
+      objectReference: {fileID: 0}
     - target: {fileID: 4084195028565893696, guid: 4b41fa7a47f3e00439e1843ea02d7955, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4168,9 +4172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a4267a9509f1643a8598cec7689357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!135 &1469093660
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5049,10 +5050,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2865961859372465295, guid: 7d82dab9b8dbb824f9a00bb6b53da0fd, type: 3}
-      propertyPath: money
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3040724845327537137, guid: 7d82dab9b8dbb824f9a00bb6b53da0fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
