@@ -15,6 +15,18 @@ public class Teleporter : MonoBehaviour
     {
         loadEventSO.RaiseLoadEvent(sceneToGo, positionToGo, fadeScreen);
     }
+
+    public void StartNewGame()
+    {
+        SaveManager.Instance?.PrepareForNewGame();
+        TriggerAction();
+    }
+
+    public void ContinueGame()
+    {
+        SaveManager.Instance?.ContinueFromMenu();
+    }
+
     public void audios()
     {
         channel.Raise2D(SoundEvent.PressButton);

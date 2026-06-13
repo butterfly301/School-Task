@@ -51,4 +51,16 @@ public class GameStatsManager : MonoBehaviour
         totalKills = 0;
         totalAttacks = 0;
     }
+
+    public void ApplyStats(float savedTimeSurvived, int savedTotalCoins, int savedTotalShields,
+        float savedDistanceTraveled, bool savedIsAlive, int savedTotalKills, int savedTotalAttacks)
+    {
+        timeSurvived = savedTimeSurvived;
+        totalCoins = savedTotalCoins;
+        totalShields = savedTotalShields;
+        distanceTraveled = savedDistanceTraveled;
+        isAlive = savedIsAlive;
+        totalKills = savedTotalKills;
+        totalAttacks = savedTotalAttacks;
+    }
 }

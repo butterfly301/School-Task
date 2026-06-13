@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory
@@ -47,6 +48,17 @@ public class Inventory
     public List<ItemInstance> GetItemList()
     {
         return itemList;
+    }
+
+    public void SetItems(IEnumerable<ItemInstance> items)
+    {
+        itemList = items != null ? new List<ItemInstance>(items) : new List<ItemInstance>();
+        OnItemListChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public int GetItemCount(int itemId)
+    {
+        return itemList.Where(item => item.GetItemID() == itemId).Sum(item => item.currentAmount);
     }
 
     // 重置背包内容

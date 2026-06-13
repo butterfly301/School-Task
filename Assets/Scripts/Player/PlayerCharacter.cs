@@ -30,6 +30,7 @@ public class PlayerCharacter : MonoBehaviour
     private void OnEnable()
     {
         isAlive = true;
+        canRevive = SaveManager.Instance != null && SaveManager.Instance.GetSavedCanRevive();
         Item06Effect.OnItem06Effect += EnableRevive;
         Item05Effect.OnItem05Effect += AddShield;
     }
@@ -46,6 +47,12 @@ public class PlayerCharacter : MonoBehaviour
         money = 0;
         shield = 1;
         canRevive = false;
+    }
+
+    public bool CanRevive
+    {
+        get => canRevive;
+        set => canRevive = value;
     }
 
     public void TakeDamage()

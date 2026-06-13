@@ -19,6 +19,9 @@ public class ItemEffectOnEnemy : MonoBehaviour
 
     protected virtual void OnEnable()
     {
+        item01Count = SaveManager.Instance != null ? SaveManager.Instance.GetPersistentItemCount(1) : 0;
+        enable01 = item01Count > 0;
+        enable03 = SaveManager.Instance != null && SaveManager.Instance.GetPersistentItemCount(3) > 0;
         Item01Effect.OnItem01Effect += AddItem01Count;
         Item01Effect.OnItem01Effect += TriggerItem01Effect;
         Item03Effect.OnItem03Effect += TriggerItem03Effect;

@@ -95,6 +95,12 @@ public class CountdownTimer : MonoBehaviour
         return timeRemaining;
     }
 
+    public void SetRemainingTime(float remainingTime)
+    {
+        timeRemaining = Mathf.Max(0f, remainingTime);
+        UpdateTimerDisplay();
+    }
+
     private void UpdateTimerDisplay()
     {
         //数字显示

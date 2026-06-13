@@ -23,6 +23,12 @@ public class Boss : Enemy
         bossAI = GetComponentInParent<BossAI>();
     }
 
+    protected override void OnEnable()
+    {
+        maxHealth = Mathf.Max(1, health);
+        base.OnEnable();
+    }
+
     /*private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
@@ -33,8 +39,7 @@ public class Boss : Enemy
     {
         SayHurtWord();
         bossAI.ForceStopSkill();
-        health--;
-        if(health<=0)
+        if (ApplyDamage(1))
             OnDie.Invoke();
     }
 

@@ -9,6 +9,12 @@ public class PlayerAttack : MonoBehaviour
 
     private bool enable09;
 
+    public bool IsItem09Armed
+    {
+        get => enable09;
+        set => enable09 = value;
+    }
+
     private void Awake()
     {
         // 开局禁用武器碰撞体，动画会在攻击时激活它
@@ -19,6 +25,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnEnable()
     {
+        enable09 = SaveManager.Instance != null && SaveManager.Instance.GetSavedItem09Armed();
         Item09Effect.OnItem09Effect += TriggerItem09Effect;
     }
 

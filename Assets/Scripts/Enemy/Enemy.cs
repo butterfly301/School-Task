@@ -1,38 +1,48 @@
-using System;
-using UnityEngine;
-using UnityEngine.Events;
 using System.Collections;
 using MyPooler;
+using UnityEngine;
+using UnityEngine.Events;
 
-
-public class Enemy : MonoBehaviour,IPooledObject
+public class Enemy : MonoBehaviour, IPooledObject
 {
     public string poolTag;
-    
+
     public UnityEvent OnHurt;
     public UnityEvent OnDie;
-    
+
+    [Header("Stats")]
+    [Min(1)] public int maxHealth = 3;
     public int moneyAmount;
-    public float increasement=0;
+    public float increasement = 0;
     public GameObject moneyPrefab;
 
+    [Header("Components")]
     public EnemyAI enemyAI;
     protected BoxCollider boxCollider;
     protected Rigidbody rigidBody;
-    
     public GameObject sparkEffect;
     [SerializeField] protected AudioEventChannel channel;
-    
 
-    void Awake()
+    private EnemyHealthBar healthBar;
+    protected int currentHealth;
+
+    protected virtual void Awake()
     {
         enemyAI = GetComponent<EnemyAI>();
         boxCollider = GetComponent<BoxCollider>();
         rigidBody = GetComponent<Rigidbody>();
+        healthBar = GetComponent<EnemyHealthBar>();
+        if (healthBar == null)
+        {
+            healthBar = gameObject.AddComponent<EnemyHealthBar>();
+        }
     }
 
     protected virtual void OnEnable()
     {
+        increasement = SaveManager.Instance != null ? SaveManager.Instance.GetPersistentItemCount(2) * 0.25f : 0f;
+        ResetHealth(maxHealth);
+        healthBar.SetVisible(true);
         Item02Effect.OnItem02Effect += IncreaseMoneyDrop;
         Inventory.OnInventoryCleared += OnInventoryCleared;
         PlayerDeathBroadcaster.Register(this);
@@ -47,21 +57,56 @@ public class Enemy : MonoBehaviour,IPooledObject
 
     public virtual void TakeDamage()
     {
-        OnDie.Invoke();
+        if (ApplyDamage(1))
+        {
+            OnDie.Invoke();
+        }
     }
-    
-    // 敌人死亡时调用
+
+    protected bool ApplyDamage(int damage)
+    {
+        currentHealth = Mathf.Max(currentHealth - damage, 0);
+        RefreshHealthBar();
+        return currentHealth <= 0;
+    }
+
+    protected void ResetHealth(int healthValue)
+    {
+        maxHealth = Mathf.Max(1, healthValue);
+        currentHealth = maxHealth;
+        RefreshHealthBar();
+    }
+
+    protected void RefreshHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.SetHealth(currentHealth, maxHealth);
+        }
+    }
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     public void Die()
     {
         CoinsOut();
         MakeCorpse();
         SparkEffect();
+        healthBar.SetVisible(false);
         GameStatsManager.Instance.totalKills += 1;
         EnemyDieAudio();
-        // 回收敌人到对象池
         StartCoroutine(EnemysBack(5));
     }
-   public IEnumerator EnemysBack(float waitTime)
+
+    public IEnumerator EnemysBack(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         DiscardToPool();
@@ -69,18 +114,28 @@ public class Enemy : MonoBehaviour,IPooledObject
 
     public void CoinsOut()
     {
-        for (int i = 0; i < moneyAmount*(1+increasement); i++)
+        for (int i = 0; i < moneyAmount * (1 + increasement); i++)
         {
-            Instantiate(moneyPrefab, transform.position, Quaternion.identity );
+            Instantiate(moneyPrefab, transform.position, Quaternion.identity);
         }
     }
 
     public void MakeCorpse()
     {
-        enemyAI.enabled = false;
-        boxCollider.enabled = false;
-        rigidBody.freezeRotation = false;
-        
+        if (enemyAI != null)
+        {
+            enemyAI.enabled = false;
+        }
+
+        if (boxCollider != null)
+        {
+            boxCollider.enabled = false;
+        }
+
+        if (rigidBody != null)
+        {
+            rigidBody.freezeRotation = false;
+        }
     }
 
     public void IncreaseMoneyDrop()
@@ -89,72 +144,97 @@ public class Enemy : MonoBehaviour,IPooledObject
     }
 
     public virtual void Set()
-    {   rigidBody.velocity = Vector3.zero;
-        enemyAI.enabled = true;
-        boxCollider.enabled = true;
-        rigidBody.freezeRotation = true;
-        sparkEffect.SetActive(false);
+    {
+        ResetHealth(maxHealth);
+        healthBar.SetVisible(true);
+
+        if (rigidBody != null)
+        {
+            rigidBody.velocity = Vector3.zero;
+            rigidBody.freezeRotation = true;
+        }
+
+        if (enemyAI != null)
+        {
+            enemyAI.enabled = true;
+        }
+
+        if (boxCollider != null)
+        {
+            boxCollider.enabled = true;
+        }
+
+        if (sparkEffect != null)
+        {
+            sparkEffect.SetActive(false);
+        }
     }
 
     private void SparkEffect()
     {
+        if (sparkEffect == null)
+            return;
+
         sparkEffect.SetActive(true);
         StartCoroutine(DisableSparkEffect());
     }
 
-    IEnumerator DisableSparkEffect()
+    private IEnumerator DisableSparkEffect()
     {
-        yield return new WaitForSeconds(4);
-        sparkEffect.SetActive(false);
+        yield return new WaitForSeconds(4f);
+        if (sparkEffect != null)
+        {
+            sparkEffect.SetActive(false);
+        }
     }
-   
+
     public void DiscardToPool()
     {
-        MyPooler.ObjectPooler.Instance.ReturnToPool(poolTag, this.gameObject);
+        ObjectPooler.Instance.ReturnToPool(poolTag, gameObject);
     }
-    
+
     public virtual void OnRequestedFromPool()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, 20f);
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag("Player")) // 检测是否带有"player"标签
+            if (collider.CompareTag("Player"))
             {
-                DiscardToPool(); // 摧毁自己
-                break; // 退出循环
+                DiscardToPool();
+                break;
             }
         }
+
         Set();
     }
 
     public virtual void OnPlayerDeath()
     {
-        //Set();
-        //MakeCorpse();
     }
+
     public void EnemyDieAudio()
     {
-        int ranndNumber = UnityEngine.Random.Range(0, 5);
-        switch (ranndNumber) 
-        { 
+        int randomNumber = Random.Range(0, 5);
+        switch (randomNumber)
+        {
             case 0:
                 channel.Raise3D(SoundEvent.EnemyDie, transform.position);
                 break;
             case 1:
-                channel.Raise3D(SoundEvent.EnemyDie1,transform.position);
-                break ;
+                channel.Raise3D(SoundEvent.EnemyDie1, transform.position);
+                break;
             case 2:
-                channel.Raise3D(SoundEvent.EnemyDie2,transform.position);
-                break ;
+                channel.Raise3D(SoundEvent.EnemyDie2, transform.position);
+                break;
             case 3:
-                channel.Raise3D(SoundEvent.EenmyDie4,transform.position);
-                break ;
+                channel.Raise3D(SoundEvent.EenmyDie4, transform.position);
+                break;
             case 4:
-                channel.Raise3D(SoundEvent.EnemyDie5,transform.position);
-                break ;
+                channel.Raise3D(SoundEvent.EnemyDie5, transform.position);
+                break;
         }
     }
-    
+
     private void OnInventoryCleared()
     {
         increasement = 0;

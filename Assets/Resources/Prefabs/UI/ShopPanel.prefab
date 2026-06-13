@@ -643,8 +643,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\xD72"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5c9648047e0e8174c96c7b8d23071654, type: 2}
-  m_sharedMaterial: {fileID: -642424582680202030, guid: 5c9648047e0e8174c96c7b8d23071654, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2b82b44382ca96e42802abf539d37264, type: 2}
+  m_sharedMaterial: {fileID: -642424582680202030, guid: 2b82b44382ca96e42802abf539d37264, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

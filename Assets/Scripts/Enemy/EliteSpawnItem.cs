@@ -9,6 +9,7 @@ public class EliteSpawnItem : MonoBehaviour
 
     private void OnEnable()
     {
+        enable04 = SaveManager.Instance != null ? SaveManager.Instance.GetPersistentItemCount(4) : 0;
         Item04Effect.OnItem04Effect += TriggerItem04Effect;
         Inventory.OnInventoryCleared += OnInventoryCleared;
     }

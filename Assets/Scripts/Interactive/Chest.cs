@@ -19,6 +19,7 @@ public class Chest : Interactive
     
     private void OnEnable()
     {
+        canDouble = SaveManager.Instance != null ? SaveManager.Instance.GetPersistentItemCount(10) : 0;
         Item10Effect.OnItem10Effect += AddSpawnItemCount;
         Inventory.OnInventoryCleared += OnInventoryCleared;
     }

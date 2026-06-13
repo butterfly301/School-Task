@@ -26,7 +26,7 @@ public class ShieldEnemy : Enemy
         }
         else
         {
-            OnDie.Invoke();
+            base.TakeDamage();
         }
     }
     
@@ -40,6 +40,7 @@ public class ShieldEnemy : Enemy
     public override void Set()
     {
         base.Set();
+        hasShield = true;
         shieldModel.SetActive(true);
     }
 

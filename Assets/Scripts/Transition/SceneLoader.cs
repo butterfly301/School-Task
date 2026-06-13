@@ -9,41 +9,39 @@ public class SceneLoader : MonoBehaviour
 {
     public Transform player;
     public Vector3 firstPosition;
-    [Header("事件监听")]
+    [Header("Event")]
     public SceneLoadEventSO loadEventSO;
     public GameSceneSO firstLoadScene;
 
-    [Header("广播")]
+    [Header("Broadcast")]
     public FadeEventSO fadeEvent;
-    
-    
+
     [SerializeField] private GameSceneSO currentLoadedScene;
-    
+
+    private AsyncOperationHandle<SceneInstance>? currentSceneHandle;
+    private string currentSceneAddress;
+    private SceneFlowType currentFlowType = SceneFlowType.Loading;
+
     private GameSceneSO sceneToLoad;
+    private string sceneAddressToLoad;
+    private SceneFlowType flowTypeToLoad;
     private Vector3 positionToGo;
-    
+
     private bool fadeScreen;
     private bool isLoading;
     public float fadeDuration;
-    
-    private void Awake()
-    {
-
-        // Addressables.LoadSceneAsync(firstLoadScene.sceneReference, LoadSceneMode.Additive);
-        // currentLoadedScene = firstLoadScene;
-        // currentLoadedScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive);
-    }
 
     private void Start()
     {
         GameFlowCoordinator.Instance.EnterFlow(GameFlowState.Loading);
         NewGame();
     }
-    
+
     private void OnEnable()
     {
         loadEventSO.LoadRequestEvent += OnLoadRequestEvent;
     }
+
     private void OnDisable()
     {
         loadEventSO.LoadRequestEvent -= OnLoadRequestEvent;
@@ -55,20 +53,22 @@ public class SceneLoader : MonoBehaviour
         OnLoadRequestEvent(sceneToLoad, firstPosition, true);
     }
 
-    private void OnLoadRequestEvent(GameSceneSO locationToLoad, Vector3 posToGo, bool fadeScreen)
+    private void OnLoadRequestEvent(GameSceneSO locationToLoad, Vector3 posToGo, bool shouldFadeScreen)
     {
         if (isLoading)
             return;
+
         GameFlowCoordinator.Instance.EnterFlow(GameFlowState.Loading);
         isLoading = true;
         sceneToLoad = locationToLoad;
+        sceneAddressToLoad = locationToLoad.sceneReference.RuntimeKey.ToString();
+        flowTypeToLoad = locationToLoad.flowType;
         positionToGo = posToGo;
-        this.fadeScreen = fadeScreen;
-        
-        
-        if (currentLoadedScene != null)
+        fadeScreen = shouldFadeScreen;
+
+        if (currentSceneHandle.HasValue)
         {
-            StartCoroutine(UnLoadPreviousScene());
+            StartCoroutine(UnloadPreviousScene());
         }
         else
         {
@@ -76,44 +76,89 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    private IEnumerator UnLoadPreviousScene()
+    public void LoadSavedScene(string sceneAddress, SceneFlowType flowType, Vector3 posToGo, bool shouldFadeScreen)
+    {
+        if (isLoading || string.IsNullOrEmpty(sceneAddress))
+            return;
+
+        GameFlowCoordinator.Instance.EnterFlow(GameFlowState.Loading);
+        isLoading = true;
+        sceneToLoad = null;
+        sceneAddressToLoad = sceneAddress;
+        flowTypeToLoad = flowType;
+        positionToGo = posToGo;
+        fadeScreen = shouldFadeScreen;
+
+        if (currentSceneHandle.HasValue)
+        {
+            StartCoroutine(UnloadPreviousScene());
+        }
+        else
+        {
+            LoadNewScene();
+        }
+    }
+
+    private IEnumerator UnloadPreviousScene()
     {
         if (fadeScreen)
         {
             fadeEvent.FadeIn(fadeDuration);
         }
-        
+
         yield return new WaitForSecondsRealtime(fadeDuration);
 
-        yield return currentLoadedScene.sceneReference.UnLoadScene();
+        if (currentSceneHandle.HasValue)
+        {
+            yield return Addressables.UnloadSceneAsync(currentSceneHandle.Value);
+            currentSceneHandle = null;
+        }
 
-        
         LoadNewScene();
     }
+
     private void LoadNewScene()
     {
-        var loadingOption = sceneToLoad.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true);
+        AsyncOperationHandle<SceneInstance> loadingOption = sceneToLoad != null
+            ? sceneToLoad.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true)
+            : Addressables.LoadSceneAsync(sceneAddressToLoad, LoadSceneMode.Additive, true);
+
         loadingOption.Completed += OnLoadCompleted;
     }
 
-    private void OnLoadCompleted(AsyncOperationHandle<SceneInstance> obj)
+    private void OnLoadCompleted(AsyncOperationHandle<SceneInstance> operationHandle)
     {
         currentLoadedScene = sceneToLoad;
-        SceneManager.SetActiveScene(obj.Result.Scene);
+        currentSceneHandle = operationHandle;
+        currentFlowType = flowTypeToLoad;
+
+        SceneManager.SetActiveScene(operationHandle.Result.Scene);
+        currentSceneAddress = operationHandle.Result.Scene.path;
         if (player != null)
         {
             player.position = positionToGo;
         }
+
         if (fadeScreen)
         {
             fadeEvent.FadeOut(fadeDuration);
         }
+
         if (currentLoadedScene != null)
         {
             GameFlowCoordinator.Instance.EnterSceneFlow(currentLoadedScene.flowType);
         }
+        else
+        {
+            GameFlowCoordinator.Instance.EnterSceneFlow(currentFlowType);
+        }
+
+        if (SaveManager.Instance != null && currentFlowType == SceneFlowType.Gameplay &&
+            !SaveManager.Instance.IsRestoringSceneLoad)
+        {
+            SaveManager.Instance.SaveCheckpoint(currentSceneAddress, currentFlowType, positionToGo);
+        }
+
         isLoading = false;
     }
-    
-    
 }
