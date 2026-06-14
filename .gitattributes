@@ -1,2 +1,47 @@
-# Auto detect text files and perform LF normalization
+# Normalize line endings for text files
 * text=auto
+
+# Unity binary/serialized files (keep as-is, no line ending conversion)
+*.asset text=-auto -text
+*.unity text=-auto -text
+*.prefab text=-auto -text
+*.mat text=-auto -text
+*.anim text=-auto -text
+*.controller text=-auto -text
+*.overrideController text=-auto -text
+*.mask text=-auto -text
+*.renderTexture text=-auto -text
+*.cubemap text=-auto -text
+*.flare text=-auto -text
+*.fontsettings text=-auto -text
+*.guiskin text=-auto -text
+*.giparams text=-auto -text
+*.inputactions text=-auto -text
+*.mixer text=-auto -text
+*.playable text=-auto -text
+*.preset text=-auto -text
+*.shadervariants text=-auto -text
+*.spriteatlas text=-auto -text
+
+# Binary image/audio/model files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.tga binary
+*.bmp binary
+*.psd binary
+*.tif binary
+*.tiff binary
+*.fbx binary
+*.obj binary
+*.blend binary
+*.mp3 binary
+*.wav binary
+*.ogg binary
+*.mp4 binary
+*.avi binary
+*.mov binary
+*.dll binary
+*.exe binary
+*.pdb binary
+*.pdf binary
