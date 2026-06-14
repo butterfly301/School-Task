@@ -26,9 +26,11 @@ public class CityGenerator : MonoBehaviour
     private string flowersFolderPath = "Prefabs/Flowers";
     public GameObject[] crackPrefabs;
     private string cracksFolderPath = "Prefabs/Cracks";
+    public GameObject[] mountainPrefabs;
+    private string mountainsFolderPath = "Prefabs/Mountains";
     
     public float buildingSpacing = 25f;   // 楼房间隔
-    public int carsPerRoad = 2;           // 每条道路上生成的汽车数量
+    public int carsPerRoad = 4;           // 每条道路上生成的石头数量
     public int crackPerRoad = 1;           // 每条道路上生成的汽车数量
     public float propDensity = 1f;      // 小物件生成密度（0 到 1）
     public float weedDensity = 1f;//杂草生成密度
@@ -98,10 +100,11 @@ public class CityGenerator : MonoBehaviour
         weedPrefabs = Resources.LoadAll<GameObject>(weedFolderPath);
         flowerPrefabs=Resources.LoadAll<GameObject>(flowersFolderPath);
         crackPrefabs=Resources.LoadAll<GameObject>(cracksFolderPath);
+        mountainPrefabs=Resources.LoadAll<GameObject>(mountainsFolderPath);
         GenerateRoad(roadGrid);
         GenerateBuildings(roadGrid, roads.ToArray());
         GenerateCars(roadGrid);
-        GenerateProps(roadGrid);
+        //GenerateProps(roadGrid);
         GenerateNavMesh();
         GenerateWeeds(roadGrid);
         GenerateFlowers(roadGrid);
@@ -191,6 +194,11 @@ public class CityGenerator : MonoBehaviour
 
                     GameObject road = Instantiate(roadPrefab, position, rotation);
                     road.isStatic = true;
+                    foreach (var r in road.GetComponentsInChildren<Renderer>())
+                    {
+                        r.forceRenderingOff = true;
+                        r.gameObject.AddComponent<NavMeshModifier>().overrideArea = true;
+                    }
                     road.name = x.ToString()+","+y.ToString();
                     roads.Add(road); // 将生成的道路添加到列表中
                 }
@@ -216,11 +224,15 @@ public class CityGenerator : MonoBehaviour
                     // 检查是否与道路重叠
                     if (!IsOverlapping(position, buildingSize, roads, roadSize))
                     {
-                        Quaternion rotation = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0);
-                        GameObject building=Instantiate(buildingPrefabs[Random.Range(0, buildingPrefabs.Length)], position, rotation);
-                        building.name = x.ToString()+","+y.ToString();
-                        building.isStatic = true;
-                        buildings.Add(building);
+                        for (int n = 0; n < 2; n++)
+                        {
+                            Vector3 pos = position + new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
+                            Quaternion rotation = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0);
+                            GameObject building = Instantiate(buildingPrefabs[Random.Range(0, buildingPrefabs.Length)], pos, rotation);
+                            building.name = x.ToString()+","+y.ToString()+"_"+n;
+                            building.isStatic = true;
+                            buildings.Add(building);
+                        }
                     }
                 }
             }
@@ -267,7 +279,7 @@ public class CityGenerator : MonoBehaviour
                                 // 随机生成汽车的朝向
                                 carRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
 
-                                // 检测汽车是否与其他汽车碰撞
+                                // 检测石头是否与其他石头碰撞
                                 Vector3 carSize = GetModelSize(carPrefab);
                                 isColliding = false;
                                 foreach (var car in cars)
@@ -286,12 +298,16 @@ public class CityGenerator : MonoBehaviour
                                 }
                             } while (isColliding);
 
-                            // 生成汽车
+                            // 生成石头
                             if (!isColliding)
                             {
+                                carPosition.y = 0;
+                                carRotation = Random.rotation;
                                 GameObject car = Instantiate(carPrefab, carPosition, carRotation);
+                                float rockScale = Random.Range(600f, 700f);
+                                car.transform.localScale = new Vector3(rockScale, rockScale, rockScale);
                                 car.isStatic = true;
-                                cars.Add(car); // 将生成的汽车添加到列表中
+                                cars.Add(car); // 将生成的石头添加到列表中
                             }
                         }
                     }
@@ -332,7 +348,11 @@ public class CityGenerator : MonoBehaviour
         return false; // 不重叠
     }
     
-    void GenerateProps(int[,] roadGrid)
+
+
+   
+
+   /* void GenerateProps(int[,] roadGrid)
     {
         int width = roadGrid.GetLength(0);
         int height = roadGrid.GetLength(1);
@@ -370,7 +390,7 @@ public class CityGenerator : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
     void GenerateWeeds(int[,] roadGrid)
     {
